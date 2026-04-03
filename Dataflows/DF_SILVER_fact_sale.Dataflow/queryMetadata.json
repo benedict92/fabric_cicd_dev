@@ -27,6 +27,11 @@
       "queryName": "TargetLakehouse",
       "loadEnabled": false
     },
+    "DevEnvironment": {
+      "queryId": "b0e85239-47d0-42d6-88a3-b7b5c9e1a61a",
+      "queryName": "DevEnvironment",
+      "loadEnabled": false
+    },
     "fact_sale": {
       "queryId": "cb4455d6-21ce-4396-9317-4914411fb13e",
       "queryName": "fact_sale",
