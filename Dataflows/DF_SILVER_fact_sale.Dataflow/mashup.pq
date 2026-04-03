@@ -8,11 +8,13 @@ shared DevEnvironment = Variable.ValueOrDefault("$(/**/CICD_Variables/DevEnviron
 [DataDestinations = {[Definition = [Kind = "Reference", QueryName = "fact_sale_DataDestination", IsNewTarget = true], Settings = [Kind = "Manual", AllowCreation = true, ColumnSettings = [Mappings = {[SourceColumnName = "SaleKey", DestinationColumnName = "SaleKey"], [SourceColumnName = "CityKey", DestinationColumnName = "CityKey"], [SourceColumnName = "CustomerKey", DestinationColumnName = "CustomerKey"], [SourceColumnName = "BillToCustomerKey", DestinationColumnName = "BillToCustomerKey"], [SourceColumnName = "StockItemKey", DestinationColumnName = "StockItemKey"], [SourceColumnName = "InvoiceDateKey", DestinationColumnName = "InvoiceDateKey"], [SourceColumnName = "DeliveryDateKey", DestinationColumnName = "DeliveryDateKey"], [SourceColumnName = "SalespersonKey", DestinationColumnName = "SalespersonKey"], [SourceColumnName = "WWIInvoiceID", DestinationColumnName = "WWIInvoiceID"], [SourceColumnName = "Description", DestinationColumnName = "Description"], [SourceColumnName = "Package", DestinationColumnName = "Package"], [SourceColumnName = "Quantity", DestinationColumnName = "Quantity"], [SourceColumnName = "UnitPrice", DestinationColumnName = "UnitPrice"], [SourceColumnName = "TaxRate", DestinationColumnName = "TaxRate"], [SourceColumnName = "TotalExcludingTax", DestinationColumnName = "TotalExcludingTax"], [SourceColumnName = "TaxAmount", DestinationColumnName = "TaxAmount"], [SourceColumnName = "Profit", DestinationColumnName = "Profit"], [SourceColumnName = "TotalIncludingTax", DestinationColumnName = "TotalIncludingTax"], [SourceColumnName = "TotalDryItems", DestinationColumnName = "TotalDryItems"], [SourceColumnName = "TotalChillerItems", DestinationColumnName = "TotalChillerItems"], [SourceColumnName = "LineageKey", DestinationColumnName = "LineageKey"]}], DynamicSchema = true, UpdateMethod = [Kind = "Replace"], TypeSettings = [Kind = "Table"]]]}]
 shared fact_sale = let
   Source = Lakehouse.Contents(null),
-  Navigation = Source{[workspaceId = "0b4eb21e-21ad-401e-a8ab-37188e3a5dff"]}[Data],
-  #"Navigation 1" = Navigation{[lakehouseId = "244d69d8-73c7-4411-b3de-96ce9b146b8d"]}[Data],
+  Navigation = Source{[workspaceId = SourceWorkspace]}[Data],
+  #"Navigation 1" = Navigation{[lakehouseId = SourceLakehouse]}[Data],
   #"Navigation 2" = #"Navigation 1"{[Id = "fact_sale", ItemKind = "Table"]}[Data]
+  SelectDemoData = if DevEnvironment = true 
+                      then Table.FirstN(#"Navigation 2", 10000) else #"Navigation 2"
 in
-  #"Navigation 2";
+  SelectDemoData;
 shared fact_sale_DataDestination = let
   Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false, HierarchicalNavigation = true]),
   Navigation_1 = Pattern{[workspaceId = TargetWorkspace]}[Data],
