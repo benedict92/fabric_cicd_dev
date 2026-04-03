@@ -5,6 +5,22 @@
     {
       "name": "DevEnvironment",
       "value": false
+    },
+    {
+      "name": "TargetLakehouse",
+      "value": "9d5e7a57-b6c9-4ed1-b21e-b6fa356ca473"
+    },
+    {
+      "name": "TargetWorkspace",
+      "value": "7f11de29-b2de-4608-892f-2fd8d9b7dee0"
+    },
+    {
+      "name": "SourceWorkspace",
+      "value": "7f11de29-b2de-4608-892f-2fd8d9b7dee0"
+    },
+    {
+      "name": "SourceLakehouse",
+      "value": "9d5e7a57-b6c9-4ed1-b21e-b6fa356ca473"
     }
   ]
 }
