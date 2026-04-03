@@ -1,0 +1,50 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {
+    "allowModernEvaluationEngine": true
+  },
+  "name": "SilberFlow",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "SourceWorkspace": {
+      "queryId": "d057085f-3eaf-4d46-95bd-a15e56069dc9",
+      "queryName": "SourceWorkspace",
+      "loadEnabled": false
+    },
+    "SourceLakehouse": {
+      "queryId": "7acf5e0d-f87e-4268-baf8-cb70205aef9b",
+      "queryName": "SourceLakehouse",
+      "loadEnabled": false
+    },
+    "TargetWorkspace": {
+      "queryId": "d143e516-847b-49c6-b238-81777e6d6328",
+      "queryName": "TargetWorkspace",
+      "loadEnabled": false
+    },
+    "TargetLakehouse": {
+      "queryId": "3ec26698-dc3a-47d5-81b0-bf9b394c746a",
+      "queryName": "TargetLakehouse",
+      "loadEnabled": false
+    },
+    "fact_sale": {
+      "queryId": "cb4455d6-21ce-4396-9317-4914411fb13e",
+      "queryName": "fact_sale",
+      "loadEnabled": false
+    },
+    "fact_sale_DataDestination": {
+      "queryId": "4ccb8089-36e4-46be-a16c-9a3db5220942",
+      "queryName": "fact_sale_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"f8fbb6ce-cdf4-4ee7-94f9-7f4609f41cb1\",\"DatasourceId\":\"c5769108-cfe1-40f3-b362-404a579cd992\"}"
+    }
+  ],
+  "parametric": true
+}
