@@ -14,7 +14,7 @@ shared fact_sale = let
   SelectDemoData = if DevEnvironment = true then Table.FirstN(#"Navigation 2", 10000) else #"Navigation 2",
   AddTaxRatePercent = Table.AddColumn(SelectDemoData, "TaxRatePercent", each [TaxRate]/100, type number)
 in
-  SelectDemoData;
+  AddTaxRatePercent;
 shared fact_sale_DataDestination = let
   Pattern = Lakehouse.Contents([CreateNavigationProperties = false, EnableFolding = false, HierarchicalNavigation = true]),
   Navigation_1 = Pattern{[workspaceId = TargetWorkspace]}[Data],
