@@ -24,6 +24,12 @@
       "note": "",
       "type": "Guid",
       "value": "0b4eb21e-21ad-401e-a8ab-37188e3a5dff"
+    },
+    {
+      "name": "DevEnvironment",
+      "note": "",
+      "type": "Boolean",
+      "value": true
     }
   ]
 }
